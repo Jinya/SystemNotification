@@ -76,6 +76,7 @@ public struct SystemNotificationMessage: View {
         }
         .padding(.vertical, configuration.padding.height)
         .padding(.horizontal, configuration.padding.width)
+        .frame(minHeight: 50)
     }
 }
 
