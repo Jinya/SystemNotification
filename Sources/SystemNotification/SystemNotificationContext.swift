@@ -82,6 +82,23 @@ public class SystemNotificationContext: ObservableObject {
             content: content(),
             configuration: configuration ?? self.configuration)
     }
+    
+    /**
+     Present a `SystemNotificationMessage` as a notification,
+     and perform an optional action after notification dismissed.
+     */
+    public func present<Content: View>(
+        content: Content,
+        configuration: SystemNotificationConfiguration? = nil,
+        afterDismiss action: (() -> Void)? = nil
+    ) {
+        dismiss {
+            self.presentAfterDismiss(
+                content: content,
+                configuration: configuration ?? self.configuration)
+            action?()
+        }
+    }
 }
 
 private extension SystemNotificationContext {
